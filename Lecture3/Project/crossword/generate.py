@@ -116,19 +116,22 @@ class CrosswordCreator():
         False if no revision was made.
         """
         # raise NotImplementedError
-        if not self.crossword.overlaps.get((x, y)):
+        overlap =  self.crossword.overlaps.get((x, y))
+        if overlap is None:
             return False
+        i, j = overlap
         
         revised = False
-        for word_x in self.domains[x]:
+        for word_x in self.domains[x].copy():
             delete_x_word = True
             for word_y in self.domains[y]:
-                if self.crossword.overlaps.get((x, y)):
+                if word_x[i] == word_y[j]:
                     delete_x_word = False
-            
+                    break
+                
             if delete_x_word:
                 self.domains[x].remove(word_x)
-        
+                revised = True
         return revised
 
     def ac3(self, arcs=None):
@@ -144,14 +147,12 @@ class CrosswordCreator():
         # Init queue
         queue = []
         if arcs:
-            queue = list(arcs)
+            queue = arcs
         else:
-            # for pair in self.crossword.overlaps:
-            #     queue.append(pair)
             for v1 in self.crossword.variables:
                 for v2 in self.crossword.neighbors(v1):
-                    if v1 != v2:
-                        queue.append((v1, v2))
+                    # if v1 != v2:
+                    queue.append((v1, v2))
         
         while queue:
             arc = queue.pop(0)
@@ -162,7 +163,7 @@ class CrosswordCreator():
                     return False
                 
                 for z in self.crossword.neighbors(x):
-                    if x != y:
+                    if z != y:
                         queue.append((z, x))
             # x_neighbors = self.crossword.neighbors(x)
             # for z in x_neighbors:
@@ -228,7 +229,34 @@ class CrosswordCreator():
         that rules out the fewest values among the neighbors of `var`.
         """
         # raise NotImplementedError
-        return list(self.domains[var])
+        # Dictionary to store how many values each possible value rules out
+        constraints = {}
+        
+        # Get unassigned neighbors
+        neighbors = [n for n in self.crossword.neighbors(var) if n not in assignment]
+        
+        # For each possible value in var's domain
+        for value in self.domains[var]:
+            eliminated_count = 0
+            
+            # For each unassigned neighbor
+            for neighbor in neighbors:
+                # Get overlap information
+                overlap = self.crossword.overlaps.get((var, neighbor))
+                if overlap is None:
+                    continue
+                    
+                var_idx, neigh_idx = overlap
+                
+                # Count how many values in neighbor's domain would be eliminated
+                for neigh_value in self.domains[neighbor]:
+                    if value[var_idx] != neigh_value[neigh_idx]:
+                        eliminated_count += 1
+            
+            constraints[value] = eliminated_count
+        
+        # Return domain values sorted by how many constraints they impose (least to most)
+        return sorted(self.domains[var], key=lambda val: constraints[val])
         
     def select_unassigned_variable(self, assignment):
         """
@@ -239,7 +267,17 @@ class CrosswordCreator():
         return values.
         """
         # raise NotImplementedError
-        return [var for var in self.crossword.variables if var not in assignment][0]
+        # return [var for var in self.crossword.variables if var not in assignment][0]
+        unassigned_vars = [var for var in self.crossword.variables if var not in assignment]
+        
+        unassigned_vars.sort(key=lambda var: len(self.domains[var]))
+        
+        min_domain_size = len(self.domains[unassigned_vars[0]])
+        min_var = [var for var in unassigned_vars if len(self.domains[var]) == min_domain_size]
+        
+        if len(min_var) > 1:
+            return max(min_var, key=lambda var: len(self.crossword.neighbors(var)))
+        return min_var[0]
 
     def backtrack(self, assignment):
         """
