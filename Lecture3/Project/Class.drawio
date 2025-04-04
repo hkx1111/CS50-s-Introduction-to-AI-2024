@@ -1,0 +1,139 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.2.2 Chrome/134.0.6998.178 Electron/35.1.2 Safari/537.36" version="26.2.2">
+  <diagram name="Crossword Classes" id="crossword-classes">
+    <mxGraphModel dx="1098" dy="647" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="variable-class" value="Variable" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="120" y="320" width="160" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="variable-const1" value="ACROSS (constant)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=4" parent="variable-class" vertex="1">
+          <mxGeometry y="26" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="variable-const2" value="DOWN (constant)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;fontStyle=4" parent="variable-class" vertex="1">
+          <mxGeometry y="52" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="variable-attr1" value="i (row index)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="variable-class" vertex="1">
+          <mxGeometry y="78" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="variable-attr2" value="j (column index)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="variable-class" vertex="1">
+          <mxGeometry y="104" width="160" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="variable-attr3" value="direction  变量的方向，&#xa;是 Variable.ACROSS (横向) &#xa;或 Variable.DOWN (纵向)。&#xa;这两个是类中定义的常量。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="variable-class" vertex="1">
+          <mxGeometry y="130" width="160" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="variable-attr4" value="length" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="variable-class" vertex="1">
+          <mxGeometry y="190" width="160" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-class" value="Crossword" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="320" y="120" width="200" height="250" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-attr1" value="height" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="26" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-attr2" value="width" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="52" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-attr3" value="structure 一个二维列表 (list of lists)&#xa;，表示谜题的结构。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="78" width="200" height="42" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-attr4" value="variables 一个集合 (set)，包含了&#xa;谜题中所有的 Variable 对象。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="120" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-attr5" value="words" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="160" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-attr6" value="overlaps" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="186" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-line" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="212" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="crossword-method1" value="neighbors(var)" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="crossword-class" vertex="1">
+          <mxGeometry y="220" width="200" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-class" value="CrosswordCreator" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeLast=0;collapsible=1;marginBottom=0;rounded=0;shadow=0;strokeWidth=1;" parent="1" vertex="1">
+          <mxGeometry x="600" y="120" width="200" height="490" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-attr1" value="crossword" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="26" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-attr2" value="domains 一个字典。键是 Variable &#xa;对象，值是一个集合，表示该变量&#xa;当前可以取的单词（即该变量的域）。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="52" width="200" height="58" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-line" value="" style="line;html=1;strokeWidth=1;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="110" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-method1" value="enforce_node_consistency()&#xa; 实现节点一致性，移除域中长度&#xa;不符的单词。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="118" width="200" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-method2" value="revise(x, y) 实现弧一致性检查的&#xa;核心逻辑，修改变量 x &#xa;的域使其与 y 兼容" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="170" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-method3" value="ac3(arcs=None)  实现 AC-3 算法，&#xa;利用 revise 来使整个 CSP 达到&#xa;弧一致性。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="230" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-method4" value="assignment_complete(assignment)&#xa;检查当前分配是否包含了所有变量。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="290" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-method5" value="consistent(assignment) 检查当前&#xa;（可能不完整的）分配是否满足所有&#xa;约束（长度、唯一性、重叠）。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="330" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-method7" value="select_unassigned_variable() 根据 &#xa;MRV 和 Degree Heuristic 选择&#xa;下一个要赋值的变量。&#xa;" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="390" width="200" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="creator-method8" value="backtrack(assignment) 实现回溯&#xa;搜索算法来寻找最终的解。" style="text;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" parent="creator-class" vertex="1">
+          <mxGeometry y="450" width="200" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="rel2" value="*" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=0;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" parent="1" source="variable-class" target="crossword-class" edge="1">
+          <mxGeometry x="-1" y="3" relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="240" y="310" />
+              <mxPoint x="290" y="310" />
+              <mxPoint x="290" y="380" />
+              <mxPoint x="370" y="380" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="note1" value="Composition: CrosswordCreator contains &#xa;exactly one Crossword instance" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=top;align=left;spacingTop=-6;" parent="1" vertex="1">
+          <mxGeometry x="580" y="50" width="220" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="note2" value="Aggregation: Crossword contains &#xa;multiple Variable objects in its variables set" style="shape=note;whiteSpace=wrap;html=1;size=14;verticalAlign=top;align=left;spacingTop=-6;" parent="1" vertex="1">
+          <mxGeometry x="280" y="60" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="rel1" value="" style="endArrow=open;html=1;endSize=12;startArrow=diamondThin;startSize=14;startFill=1;edgeStyle=orthogonalEdgeStyle;align=left;verticalAlign=bottom;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="crossword-attr1" target="creator-attr1" edge="1">
+          <mxGeometry x="-1" y="3" relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q7fBZdniofxeMJuNYUrN-1" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212)); color: rgb(0, 0, 0);&quot;&gt;&lt;span style=&quot;font-size: 13px; text-align: left;&quot;&gt;每个&amp;nbsp;&lt;code style=&quot;font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); white-space-collapse: preserve-breaks; padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; border: 1px solid var(--vscode-textSeparator-foreground, #424242); word-break: break-word;&quot;&gt;Variable&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204);&quot;&gt;&amp;nbsp;&lt;/span&gt;&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;font-size: 13px; text-align: left;&quot;&gt;对象唯一地标识了填字游戏中一个需要填充单词的位置、方向和长度。它是约束满足问题 (CSP) 中的一个核心元素——变量&lt;/span&gt;&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="350" y="400" width="160" height="120" as="geometry" />
+        </mxCell>
+        <mxCell id="Q7fBZdniofxeMJuNYUrN-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1.013;entryY=0.167;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="Q7fBZdniofxeMJuNYUrN-1" target="variable-attr3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Q7fBZdniofxeMJuNYUrN-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q7fBZdniofxeMJuNYUrN-3" target="crossword-attr6">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="270" y="140" />
+              <mxPoint x="310" y="140" />
+              <mxPoint x="310" y="319" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Q7fBZdniofxeMJuNYUrN-3" value="&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;一个字典 (dictionary)。键 (key) 是一个由两个不同&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;Variable&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;对象组成的元组&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;(v1, v2)&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;，值 (value) 是表示它们重叠信息的元组&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;(i, j)&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;或者&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;None&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;。&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;(i, j)&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;表示&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;v1&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;的第&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;i&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;个字母必须与&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;v2&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;的第&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;j&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;个字母相同。如果两个变量没有重叠，则值为&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;None&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;。这个字典存储了 CSP 中的&lt;/span&gt;&lt;strong style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;二元约束&lt;/strong&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;信息。&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="80" width="250" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="Q7fBZdniofxeMJuNYUrN-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="Q7fBZdniofxeMJuNYUrN-5" target="crossword-method1">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="300" y="260" />
+              <mxPoint x="300" y="355" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="Q7fBZdniofxeMJuNYUrN-5" value="&lt;span style=&quot;background-color: light-dark(#ffffff, var(--ge-dark-color, #121212));&quot;&gt;&lt;font face=&quot;Times New Roman&quot;&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;接收一个&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;Variable&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;对象&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;var&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;作为输入，返回一个集合，包含所有与&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;var&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;有重叠（即在&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;overlaps&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;字典中有对应条目）的其他&amp;nbsp;&lt;/span&gt;&lt;code style=&quot;color: var(--vscode-textPreformat-foreground, #f78383); padding: 0px 2px; border-radius: 3px; overflow-wrap: anywhere; font-size: var(--vscode-editor-font-size, var(--vscode-font-size, 12px)); border: 1px solid var(--vscode-textSeparator-foreground, #424242); white-space-collapse: preserve-breaks; word-break: break-word; text-align: left;&quot;&gt;Variable&lt;/code&gt;&lt;span style=&quot;color: rgb(204, 204, 204); font-size: 13px; text-align: left;&quot;&gt;&amp;nbsp;对象。&lt;/span&gt;&lt;/font&gt;&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="20" y="220" width="250" height="80" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
