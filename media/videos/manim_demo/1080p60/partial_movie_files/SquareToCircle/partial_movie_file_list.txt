@@ -1,0 +1,7 @@
+# This file is used internally by FFMPEG.
+file 'file:C:/Users/hkx/OneDrive/桌面/2025Spring/CS50’s Introduction to AI 2024/media/videos/manim_demo/1080p60/partial_movie_files/SquareToCircle/3977891868_3843788654_223132457.mp4'
+file 'file:C:/Users/hkx/OneDrive/桌面/2025Spring/CS50’s Introduction to AI 2024/media/videos/manim_demo/1080p60/partial_movie_files/SquareToCircle/2852726489_2075261826_3172591498.mp4'
+file 'file:C:/Users/hkx/OneDrive/桌面/2025Spring/CS50’s Introduction to AI 2024/media/videos/manim_demo/1080p60/partial_movie_files/SquareToCircle/2852726489_4071516364_3427058646.mp4'
+file 'file:C:/Users/hkx/OneDrive/桌面/2025Spring/CS50’s Introduction to AI 2024/media/videos/manim_demo/1080p60/partial_movie_files/SquareToCircle/2852726489_4109025390_1503646932.mp4'
+file 'file:C:/Users/hkx/OneDrive/桌面/2025Spring/CS50’s Introduction to AI 2024/media/videos/manim_demo/1080p60/partial_movie_files/SquareToCircle/2852726489_4087643949_1726946588.mp4'
+file 'file:C:/Users/hkx/OneDrive/桌面/2025Spring/CS50’s Introduction to AI 2024/media/videos/manim_demo/1080p60/partial_movie_files/SquareToCircle/2852726489_4247107814_3830356405.mp4'
