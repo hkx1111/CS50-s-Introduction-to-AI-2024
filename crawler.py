@@ -3,6 +3,7 @@ import requests
 import time
 from bs4 import BeautifulSoup
 
+# ##
 # Base URL for the CS50 AI course
 base_url = "https://cs50.harvard.edu/ai/2024/notes/"
 
