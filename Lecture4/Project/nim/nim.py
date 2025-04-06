@@ -101,13 +101,14 @@ class NimAI():
         Return the Q-value for the state `state` and the action `action`.
         If no Q-value exists yet in `self.q`, return 0.
         """
-        raise NotImplementedError
+        # raise NotImplementedError
+        return self.q.get((tuple(state), action), 0)
 
     def update_q_value(self, state, action, old_q, reward, future_rewards):
         """
         Update the Q-value for the state `state` and the action `action`
         given the previous Q-value `old_q`, a current reward `reward`,
-        and an estiamte of future rewards `future_rewards`.
+        and an estimate of future rewards `future_rewards`.
 
         Use the formula:
 
@@ -118,7 +119,9 @@ class NimAI():
         `alpha` is the learning rate, and `new value estimate`
         is the sum of the current reward and estimated future rewards.
         """
-        raise NotImplementedError
+        # raise NotImplementedError
+        new_q = old_q + self.alpha * (reward + future_rewards - old_q)
+        self.q[(tuple(state), action)] = new_q
 
     def best_future_reward(self, state):
         """
@@ -130,7 +133,15 @@ class NimAI():
         Q-value in `self.q`. If there are no available actions in
         `state`, return 0.
         """
-        raise NotImplementedError
+        # raise NotImplementedError
+        if all([n == 0 for n in state]):
+            return 0
+        
+        actions = list(Nim.available_actions(state))
+        q_values = []
+        for action in actions:
+            q_values.append(self.get_q_value(state, action))
+        return max(q_values)
 
     def choose_action(self, state, epsilon=True):
         """
@@ -147,9 +158,15 @@ class NimAI():
         If multiple actions have the same Q-value, any of those
         options is an acceptable return value.
         """
-        raise NotImplementedError
-
-
+        # raise NotImplementedError
+        if epsilon and random.random() <= self.epsilon:
+            return random.choice(list(Nim.available_actions(state)))
+        # else:
+        actions = list(Nim.available_actions(state))
+        actions.sort(key=lambda x: self.get_q_value(state, x))
+        
+        return actions[-1]        
+        
 def train(n):
     """
     Train an AI by playing `n` games against itself.

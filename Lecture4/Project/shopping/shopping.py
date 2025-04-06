@@ -122,7 +122,7 @@ def train_model(evidence, labels):
     fitted k-nearest neighbor model (k=1) trained on the data.
     """
     # raise NotImplementedError
-    model = KNeighborsClassifier(n_neighbors=1)
+    model = KNeighborsClassifier(n_neighbors=2)
     model.fit(evidence, labels)
     
     return model
