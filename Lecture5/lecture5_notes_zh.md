@@ -18,35 +18,40 @@
 
 实现这一点的一种方法是使用阶跃函数，该函数在达到特定阈值之前给出 0，达到阈值后给出 1。
 
-[阶跃函数图]
+![alt text](image.png)
 
 另一种方法是使用逻辑函数，它给出从 0 到 1 的任何实数作为输出，从而表达对其判断的分级置信度。
 
-[逻辑函数图]
+![alt text](image-1.png)
 
 另一种可能的函数是整流线性单元（ReLU），它允许输出为任何正值。如果值为负，ReLU 将其设置为 0。
 
-[ReLU 函数图]
+![alt text](image-2.png)
 
-无论我们选择使用哪个函数，我们 learned last lecture that the inputs are modified by weights in addition to the bias, and the sum of those is passed to an activation function. This stays true for simple neural networks.
+无论我们选择使用哪种函数，我们在上一讲中了解到输入会被权重修改并加上偏置，然后这些的总和会传递给激活函数。这在简单的神经网络中依然适用。
 
 ### 神经网络结构
 
 神经网络可以被认为是上述概念的表示，其中一个函数将输入求和以产生输出。
 
-[神经网络基本结构图]
+![alt text](image-3.png)
 
-The two white units on the left are the input and the unit on the right is an output. The inputs are connected to the output by a weighted edge. To make a decision, the output unit multiplies the inputs by their weights in addition to the bias (w₀), and the uses function g to determine the output.
+左侧的两个白色单元是输入，右侧的单元是输出。输入通过带权重的边与输出相连。为了做出决策，输出单元将输入乘以权重并加上偏置(w₀)，然后使用函数g来确定输出。
 
-For example, an Or logical connective can be represented as a function f with the following truth table:
+例如，一个逻辑或连接可以表示为函数f，其真值表如下：
+| x | y | f(x, y) |
+|---|---|--------|
+| 0 | 0 |   0    |
+| 0 | 1 |   1    |
+| 1 | 0 |   1    |
+| 1 | 1 |   1    |
 
-[Or 逻辑真值表]
+我们可以将此函数可视化为神经网络。x₁是一个输入单元，x₂是另一个输入单元。它们通过权重为1的边连接到输出单元。然后，输出单元使用函数g(-1 + 1x₁ + 2x₂)，阈值为0，输出0或1(假或真)。
+![alt text](image-4.png)
+例如，当x₁ = x₂ = 0时，总和为(-1)。这低于阈值，所以函数g将输出0。但是，如果x₁或x₂中的任一个或两者都等于1，那么所有输入的总和将是0或1。两者都达到或超过阈值，因此函数将输出1。
 
-We can visualize this function as a neural network. x₁ is one input unit, and x₂ is another input unit. They are connected to the output unit by an edge with a weight of 1. The output unit then uses function g(-1 + 1x₁ + 2x₂) with a threshold of 0 to output either 0 or 1 (false or true).
+类似的过程可以用于与函数(其中偏置将是(-2))。此外，输入和输出不必是不同的。类似的过程可以用于将湿度和气压作为输入，并产生下雨的概率作为输出。或者，在不同的例子中，输入可以是花在广告上的钱和花费的月份，输出是销售的预期收入。这可以扩展到任意数量的输入，方法是将每个输入x₁…xₙ乘以权重w₁…wₙ，对结果值求和并加上偏置w₀。
 
-For example, in the case where x₁ = x₂ = 0, the sum is (-1). This is below the threshold, so the function g will output 0. However, if either or both of x₁ or x₂ are equal to 1, then the sum of all inputs will be either 0 or 1. Both are at or above the threshold, so the function will output 1.
-
-A similar process can be repeated with the And function (where the bias will be (-2)). Moreover, inputs and outputs don’t have to be distinct. A similar process can be used to take humidity and air pressure as input, and produce the probability of rain as output. Or, in a different example, inputs can be money spent on advertising and the month when it was spent to get the output of expected revenue from sales. This can be extended to any number of inputs by multiplying each input x₁ … xₙ by weight w₁ … wₙ, summing up the resulting values and adding a bias w₀.
 
 ### 梯度下降
 
@@ -68,19 +73,19 @@ A similar process can be repeated with the And function (where the bias will be 
 
 使用梯度下降，可以找到许多问题的答案。例如，我们可能想知道的不仅仅是“今天会下雨吗？”我们可以使用一些输入来生成不同类型天气的概率，然后只选择最有可能的天气。
 
-[多输出神经网络图]
+![alt text](image-5.png)
 
 这可以用任意数量的输入和输出来完成，其中每个输入都连接到每个输出，并且输出代表我们可以做出的决定。请注意，在这种神经网络中，输出是不连接的。这意味着每个输出及其来自所有输入的相关权重可以被视为一个单独的神经网络，因此可以与其他输出分开训练。
 
 到目前为止，我们的神经网络依赖于感知器输出单元。这些是只能学习线性决策边界的单元，使用直线来分隔数据。也就是说，基于线性方程，感知器可以对输入进行分类，使其成为一种或另一种类型（例如左图）。但是，通常，数据不是线性可分的（例如右图）。在这种情况下，我们转向多层神经网络来非线性地建模数据。
 
-[线性可分与非线性可分图]
+![alt text](image-6.png)
 
 ### 多层神经网络
 
 多层神经网络是具有输入层、输出层和至少一个隐藏层的人工神经网络。虽然我们提供输入和输出来训练模型，但我们，人类，不会向隐藏层内的单元提供任何值。第一个隐藏层中的每个单元从输入层的每个单元接收加权值，对其执行某些操作并输出一个值。这些值中的每一个都被加权并进一步传播到下一层，重复此过程直到达到输出层。通过隐藏层，可以对非线性数据进行建模。
 
-[多层神经网络图]
+![alt text](image-7.png)
 
 ### 反向传播
 
@@ -92,19 +97,13 @@ A similar process can be repeated with the And function (where the bias will be 
   - 将误差向后传播一层。换句话说，当前考虑的层向前一层发送误差。
   - 更新权重。
 
-- 将误差向后传播一层。换句话说，当前考虑的层向前一层发送误差。
-- 更新权重。
-
-- 将误差向后传播一层。换句话说，当前考虑的层向前一层发送误差。
-- 更新权重。
-
 这可以扩展到任意数量的隐藏层，创建深度神经网络，即具有多个隐藏层的神经网络。
 
 ### 过拟合
 
 过拟合是对训练数据建模过于紧密，从而无法推广到新数据。对抗过拟合的一种方法是丢弃（dropout）。在这种技术中，我们在学习阶段临时移除随机选择的单元。这样，我们试图防止过度依赖网络中的任何一个单元。在整个训练过程中，神经网络将采用不同的形式，每次丢弃一些其他单元，然后再次使用它们：
 
-[Dropout 示意图]
+![alt text](image-8.png)
 
 请注意，训练完成后，将再次使用整个神经网络。
 
@@ -205,17 +204,17 @@ if len(sys.argv) == 2:
 
 让我们考虑以下示例：
 
-[图像卷积图]
+![alt text](image-9.png)
 
-内核是蓝色矩阵，图像是左侧的大矩阵。生成的过滤图像是右下角的小矩阵。要使用内核过滤图像，我们从图像左上角值为 20 的像素（坐标 1,1）开始。然后，我们将它周围的所有值乘以内核中的相应值并将它们相加 (10*0 + 20*(-1) + 30*0 + 10*(-1) + 20*5 + 30*(-1) + 20*0 + 30*(-1) + 40\*0)，产生值 10。然后，我们将对右侧的像素 (30)、第一个像素下方的像素 (30) 以及该像素右侧的像素 (40) 执行相同的操作。这会生成一个过滤后的图像，其值显示在右下角。
+内核是蓝色矩阵，图像是左侧的大矩阵。生成的过滤图像是右下角的小矩阵。要使用内核过滤图像，我们从图像左上角值为 20 的像素（坐标 1,1）开始。然后，我们将它周围的所有值乘以内核中的相应值并将它们相加 (10\*0 + 20\*(-1) + 30\*0 + 10\*(-1) + 20\*5 + 30\*(-1) + 20\*0 + 30\*(-1) + 40\*0)，产生值 10。然后，我们将对右侧的像素 (30)、第一个像素下方的像素 (30) 以及该像素右侧的像素 (40) 执行相同的操作。这会生成一个过滤后的图像，其值显示在右下角。
 
 不同的内核可以完成不同的任务。对于边缘检测，通常使用以下内核：
 
-[边缘检测内核图]
+![alt text](image-10.png)
 
 这里的想法是，当像素与其所有邻居相似时，它们应该相互抵消，从而产生值 0。因此，像素越相似，图像的该部分就越暗，而像素差异越大，图像就越亮。将此内核应用于图像（左侧）会产生具有明显边缘的图像（右侧）：
 
-[边缘检测结果图]
+![alt text](image-11.png)
 
 让我们考虑一下图像卷积的实现。我们正在使用 PIL 库（代表 Python 图像库），它可以为我们完成大部分繁重的工作。
 
@@ -245,13 +244,13 @@ filtered.show()
 
 尽管如此，由于用作神经网络输入的像素数量，在神经网络中处理图像在计算上是昂贵的。解决此问题的另一种方法是池化，其中通过从输入中的区域进行采样来减小输入的大小。彼此相邻的像素属于图像中的同一区域，这意味着它们很可能相似。因此，我们可以取一个像素来代表整个区域。实现此目的的一种方法是使用最大池化，其中选择的像素是同一区域中所有其他像素中值最高的像素。例如，如果我们将左侧正方形（如下所示）分成四个 2X2 的正方形，通过从该输入进行最大池化，我们得到右侧的小正方形。
 
-[最大池化图]
+![alt text](image-12.png)
 
 ## 卷积神经网络
 
 卷积神经网络是使用卷积的神经网络，通常用于分析图像。它首先应用滤波器，这些滤波器可以使用不同的内核来帮助提取图像的一些特征。这些滤波器可以像神经网络中的其他权重一样得到改进，方法是根据输出的误差调整其内核。然后，将生成的图像池化，之后将像素作为输入提供给传统的神经网络（称为展平的过程）。
 
-[卷积神经网络图]
+![alt text](image-13.png)
 
 卷积和池化步骤可以重复多次，以提取其他特征并减小神经网络的输入大小。这些过程的好处之一是，通过卷积和池化，神经网络对变化的敏感度降低。也就是说，如果从略微不同的角度拍摄同一张图片，卷积神经网络的输入将是相似的，而如果没有卷积和池化，每个图像的输入将大不相同。
 
@@ -324,10 +323,11 @@ if len(sys.argv) == 2:
 
 ## 循环神经网络
 
-前馈神经网络是我们到目前为止讨论过的神经网络类型，其中将输入数据提供给网络，该网络最终产生一些输出。下面可以看到前馈神经网络的工作方式的图表。
+前馈神经网络是我们之前讨论过的神经网络类型，其中将输入数据提供给网络，该网络最终产生一些输出。下面可以看到前馈神经网络的工作方式的图表。
 
-[前馈神经网络图]
+![alt text](image-14.png)
 
 与此相反，循环神经网络由非线性结构组成，其中网络使用其自己的输出来作为输入。例如，微软的 Captionbot 能够用句子描述图像的内容。这与分类不同，因为输出可以根据图像的属性而变化。虽然前馈神经网络无法改变输出的数量，但循环神经网络能够做到这一点，这要归功于它们的结构。在字幕任务中，网络将处理输入以产生输出，然后从该点继续处理，产生另一个输出，并根据需要重复。
 
 循环神经网络在网络处理序列而不是单个个体对象的情况下很有帮助。上面，神经网络需要产生一个单词序列。但是，相同的原理可以应用于分析视频文件（由一系列图像组成）或翻译任务（其中一系列输入（源语言中的单词）被处理以产生一系列输出（目标语言中的单词））。
+![alt text](image-15.png)
